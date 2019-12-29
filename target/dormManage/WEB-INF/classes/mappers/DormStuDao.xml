@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DormStuDao">
+  <resultMap id="BaseResultMap" type="pojo.DormStu">
+    <result column="d_no" jdbcType="VARCHAR" property="dNo" />
+    <result column="s_no" jdbcType="VARCHAR" property="sNo" />
+    <result column="bed_no" jdbcType="INTEGER" property="bedNo" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="pojo.StuDorm">
+    <result column=" students.`s_no`" jdbcType="VARCHAR" property="sNo" />
+    <result column=" students.`s_name`" jdbcType="VARCHAR" property="sName" />
+    <result column="students.`sex`" jdbcType="VARCHAR" property="sex" />
+    <result column="students.`dept`" jdbcType="VARCHAR" property="dept" />
+    <result column="dorm_stu.`d_no`" jdbcType="VARCHAR" property="dNo" />
+    <result column="dorm_stu.`bed_no`" jdbcType="INTEGER" property="bedNo" />
+  </resultMap>
+  <insert id="insert" parameterType="pojo.DormStu">
+    insert into dorm_stu (d_no, s_no, bed_no
+      )
+    values (#{dNo,jdbcType=VARCHAR}, #{sNo,jdbcType=VARCHAR}, #{bedNo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.DormStu">
+    insert into dorm_stu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dNo != null">
+        d_no,
+      </if>
+      <if test="sNo != null">
+        s_no,
+      </if>
+      <if test="bedNo != null">
+        bed_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dNo != null">
+        #{dNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bedNo != null">
+        #{bedNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteAllDS">
+    delete FROM dorm_stu
+  </delete>
+
+  <select id="getArrange" resultMap="BaseResultMap2">
+
+    SELECT s.`s_no`,s.`s_name`,s.`sex`,s.`dept`,ds.`d_no`,ds.`bed_no` FROM students s,dorm_stu ds
+    WHERE s.`s_no`=ds.`s_no`
+
+    <if test="sNo !=null">
+      and s.`s_no` like CONCAT(CONCAT('%', #{sNo,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="sName !=null">
+      and s.`s_name` like CONCAT(CONCAT('%', #{sName,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="dNo !=null">
+      and ds.`d_no` like CONCAT(CONCAT('%', #{dNo,jdbcType=VARCHAR}), '%')
+    </if>
+    limit #{start},#{number}
+
+  </select>
+  <select id="count" resultType="Integer">
+    select count(*)  FROM students s,dorm_stu ds
+    WHERE s.`s_no`=ds.`s_no`
+
+    <if test="sNo !=null">
+      and s.`s_no` like CONCAT(CONCAT('%', #{sNo,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="sName !=null">
+      and s.`s_name` like CONCAT(CONCAT('%', #{sName,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="dNo !=null">
+      and ds.`d_no` like CONCAT(CONCAT('%', #{dNo,jdbcType=VARCHAR}), '%')
+    </if>
+  </select>
+
+</mapper>

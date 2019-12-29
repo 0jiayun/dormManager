@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentsDao">
+  <resultMap id="BaseResultMap" type="pojo.Students">
+    <id column="s_no" jdbcType="VARCHAR" property="sNo" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    s_no, s_name, dept, sex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from students
+    where s_no = #{sNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from students
+    where s_no = #{sNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="pojo.Students">
+    insert into students (s_no, s_name, dept, 
+      sex)
+    values (#{sNo,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Students">
+    insert into students
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sNo != null">
+        s_no,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sNo != null">
+        #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Students">
+    update students
+    <set>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_no = #{sNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Students">
+    update students
+    set s_name = #{sName,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR}
+    where s_no = #{sNo,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getDepts" resultType="Map">
+    select dept from students
+    where sex=#{sex}
+    group by dept
+    ORDER BY dept
+  </select>
+
+  <select id="getStuByDeptAndSex" resultMap="BaseResultMap">
+    select * from students
+    where sex=#{sex} and dept =#{dept}
+  </select>
+  
+  <select id="getStudents" resultMap="BaseResultMap">
+    select * from students
+    where 1=1
+    <if test="sNo !=null">s
+      and s_no like CONCAT(CONCAT('%', #{sNo,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="sName !=null">
+      and s_name like CONCAT(CONCAT('%', #{sName,jdbcType=VARCHAR}), '%')
+    </if>
+    limit #{start},#{number}
+
+  </select>
+  <select id="count" resultType="Integer">
+    select COUNT(*) from students
+    where 1=1
+    <if test="sNo !=null">
+      and s_no like CONCAT(CONCAT('%', #{sNo,jdbcType=VARCHAR}), '%')
+    </if>
+
+    <if test="sName !=null">
+      and s_name like CONCAT(CONCAT('%', #{sName,jdbcType=VARCHAR}), '%')
+    </if>
+  </select>
+
+  <delete id="deleteAllStu">
+    delete from students
+  </delete>
+</mapper>
