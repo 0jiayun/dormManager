@@ -80,6 +80,11 @@ public class DormStuServiceImpl implements DormStuService {
     }
 
     @Override
+    public List<StuDorm> getStuDorms() {
+        return dormStuDao.getAllArranges();
+    }
+
+    @Override
     public Map deleteAll() {
         Map resultMap=new HashMap();
         try {

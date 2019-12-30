@@ -120,4 +120,19 @@
   <delete id="deleteAllStu">
     delete from students
   </delete>
+
+  <select id="countDeptStudents" resultType="Integer">
+    select count(*) from students
+    where dept=#{dept}
+    <if test="sex!=null">
+      and sex=#{sex}
+    </if>
+
+  </select>
+
+  <select id="getAllDepts" resultType="Map">
+    SELECT dept,COUNT(*) allNum FROM students
+    GROUP BY dept
+    ORDER BY COUNT(*) DESC
+  </select>
 </mapper>

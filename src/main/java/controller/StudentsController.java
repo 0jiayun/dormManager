@@ -20,4 +20,10 @@ public class StudentsController {
     public Map getStudents(@RequestBody Map<String,Object> map){
         return studentsService.getStudents(map);
     }
+
+    @RequestMapping("stuShow")
+    @ResponseBody
+    public Map stuShow(){
+        return studentsService.countDeptStudents();
+    }
 }

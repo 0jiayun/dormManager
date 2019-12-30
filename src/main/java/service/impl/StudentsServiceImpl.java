@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pojo.Students;
 import service.StudentsService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,23 @@ public class StudentsServiceImpl implements StudentsService {
         resultMap.put("code",0);
         resultMap.put("count",count);
         resultMap.put("data",studentsList);
+        return resultMap;
+    }
+
+    @Override
+    public Map countDeptStudents() {
+        Map resultMap=new HashMap();
+        List<Map<String,Object>> dataList=new ArrayList<>();
+        List<Map<String,Object>> list=studentsDao.getAllDepts();
+        for (Map<String,Object> map:list){
+            map.put("manNum",studentsDao.countDeptStudents(map.get("dept").toString(),"男"));
+            map.put("womanNum",studentsDao.countDeptStudents(map.get("dept").toString(),"女"));
+            dataList.add(map);
+        }
+        resultMap.put("msg","SUCCESS");
+        resultMap.put("code",0);
+        resultMap.put("data",dataList);
+
         return resultMap;
     }
 }

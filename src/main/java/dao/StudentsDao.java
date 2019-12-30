@@ -28,5 +28,9 @@ public interface StudentsDao {
 
     Integer count(@Param("sNo")String sNo,@Param("sName") String sName);
 
+    List<Map<String,Object>> getAllDepts();
+
+    int countDeptStudents(@Param("dept") String dept,@Param("sex") String sex );
+
     Boolean deleteAllStu();
 }

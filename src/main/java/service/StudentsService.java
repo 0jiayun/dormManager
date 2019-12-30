@@ -11,4 +11,6 @@ public interface StudentsService {
     Map insertStudents(List<Students> list);
 
     Map getStudents(Map<String ,Object> map);
+
+    Map countDeptStudents();
 }

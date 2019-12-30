@@ -86,4 +86,10 @@
     </if>
   </select>
 
+  <select id="getAllArranges" resultMap="BaseResultMap2">
+      SELECT s.`s_no`,s.`s_name`,s.`sex`,s.`dept`,ds.`d_no`,ds.`bed_no` FROM students s,dorm_stu ds
+      WHERE s.`s_no`=ds.`s_no`
+      order by ds.`d_no`
+  </select>
+
 </mapper>
