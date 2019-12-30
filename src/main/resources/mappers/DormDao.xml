@@ -49,6 +49,7 @@
 
   <select id="count" resultType="Integer">
     select count(*) from dorm
+    where 1=1
     <if test="dNo !=null">
       and d_no like CONCAT(CONCAT('%', #{dNo,jdbcType=VARCHAR}), '%')
     </if>

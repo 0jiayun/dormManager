@@ -95,7 +95,7 @@
   <select id="getStudents" resultMap="BaseResultMap">
     select * from students
     where 1=1
-    <if test="sNo !=null">s
+    <if test="sNo !=null">
       and s_no like CONCAT(CONCAT('%', #{sNo,jdbcType=VARCHAR}), '%')
     </if>
 
