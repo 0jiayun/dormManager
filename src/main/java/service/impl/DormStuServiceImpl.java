@@ -41,8 +41,10 @@ public class DormStuServiceImpl implements DormStuService {
         List<Dorm> manDormList=dormDao.getManDorms("13-");
         List<Dorm> womanDormList=dormDao.getWomanDorms("13-");
 
-        manMap=arrangeDorm(man,manDormList,manMap,dormManNum);
-        womanMap=arrangeDorm(woman,womanDormList,womanMap,dormManNum);
+        List<Students> manList=studentsDao.getStudentsBySex(man);
+        List<Students> womanList=studentsDao.getStudentsBySex(woman);
+        manMap=arrangeDorm2(manList,manDormList,man);
+        womanMap=arrangeDorm2(womanList,womanDormList,woman);
         if (Integer.parseInt(manMap.get("code").toString())==0){
            return womanMap;
         }else {
@@ -103,87 +105,119 @@ public class DormStuServiceImpl implements DormStuService {
         return resultMap;
     }
 
-    public Map arrangeDorm(String sex,List<Dorm> dormList,Map resultMap,double dormManNum){
-        int dormId=1;//记录使用到哪一个宿舍
-        Map<String,Object> overDorm=new HashMap<>();//记录空余宿舍新信息
-        overDorm.put("空余宿舍",0);//位置dormId
-        overDorm.put("空余床位数量",0);
-        overDorm.put("空余床位起始位置",0);
-        overDorm.put("宿舍号","");
+    public Map arrangeDorm2(List<Students> personList,List<Dorm> dormList,String sex){
+        Map resultMap=new HashMap();
+        int personNum=personList.size();//总人数
+        int dormNum=dormList.size();
+        int pid=0;//记录安排到第几个人
+        int did=0;//记录安排到第几个宿舍
+        while(pid<personNum){
+            for (int i=1;i<=3;i++){
 
-        List<Map<String,String>> deptlist=studentsDao.getDepts(sex);//获取性别专业数
-
-        for (Map<String,String> deptMap:deptlist){
-            List<Students> studentsList=studentsDao.getStuByDeptAndSex(deptMap.get("dept"),sex);//获取专业对应性别人数
-            int deptSentry=1;//专业人数统计哨兵，统计安排到第几个人
-            if (Integer.parseInt(overDorm.get("空余宿舍").toString())!=0){//上一次分配中有剩余床位
-                int bedNum=Integer.parseInt(overDorm.get("空余床位数量").toString());
-                int bed=Integer.parseInt(overDorm.get("空余床位起始位置").toString());
-                Iterator<Students> iterator=studentsList.iterator();
-                int j=0;
-                DormStu dormStu=new DormStu();
-                while (iterator.hasNext()&&j<bedNum){
-                    Students student=iterator.next();
-                    dormStu.setBedNo(bed);
-                    dormStu.setsNo(student.getsNo());
-                    dormStu.setdNo(overDorm.get("宿舍号").toString());
-                    bed++;
-                    iterator.remove();
-                    try {
-                        dormStuDao.insert(dormStu);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        resultMap.put("msg",sex+"宿舍安排出错");
-                        resultMap.put("code",1);
-                        return resultMap;
-                    }
-                   j++;
-
+                DormStu dormStu=new DormStu(dormList.get(did).getdNo(),personList.get(pid).getsNo(),i);
+                try {
+                    dormStuDao.insert(dormStu);
+                }catch (Exception e){
+                    e.printStackTrace();
+                    resultMap.put("msg",sex+"宿舍安排出错");
+                    resultMap.put("code",1);
+                    return resultMap;
                 }
-                studentsList= Lists.newArrayList(iterator);
-                dormId++;
-
+                pid++;
+                if (pid>=personNum) break;
             }
-            int studentsNum=studentsList.size();
-            int dormNum=(int)Math.ceil((double)studentsNum/dormManNum);//向上取整
-            int beginNum=dormId;
-            for(;dormId<=(beginNum+dormNum-1);dormId++){
-                int i=1;//床位数
-                for (;i<=dormManNum&&deptSentry<=studentsList.size();i++){
-                    DormStu dormStu=new DormStu(dormList.get(dormId-1).getdNo(),studentsList.get(deptSentry-1).getsNo(),i);
-                    try {
-                        dormStuDao.insert(dormStu);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        resultMap.put("msg",sex+"宿舍安排出错");
-                        resultMap.put("code",1);
-                        return resultMap;
-                    }
-                    deptSentry++;
+            did++;
+            if (pid>=personNum||did>=dormNum) break;
 
-                }
-
-            }
-            dormId--;//减去最后一次加的一
-            int overBed=(int)(dormNum*dormManNum-studentsNum);//空余床位
-            if (overBed!=0){//有剩余
-                int bedid=(int)(dormManNum-overBed+1);//空余床位起始序号
-                overDorm.put("空余床位起始位置",bedid);
-                overDorm.put("宿舍号",dormList.get(dormId-1).getdNo());
-                overDorm.put("空余床位数量",overBed);
-                overDorm.put("空余宿舍",dormId);
-            }else {
-                overDorm.put("空余宿舍",0);//位置dormId
-                overDorm.put("空余床位数量",0);
-                overDorm.put("空余床位起始位置",0);
-                overDorm.put("宿舍号","");
-            }
         }
+
 
         resultMap.put("msg","宿舍安排成功");
         resultMap.put("code",0);
         return resultMap;
     }
+
+//    public Map arrangeDorm(String sex,List<Dorm> dormList,Map resultMap,double dormManNum){
+//        int dormId=1;//记录使用到哪一个宿舍
+//        Map<String,Object> overDorm=new HashMap<>();//记录空余宿舍新信息
+//        overDorm.put("空余宿舍",0);//位置dormId
+//        overDorm.put("空余床位数量",0);
+//        overDorm.put("空余床位起始位置",0);
+//        overDorm.put("宿舍号","");
+//
+//        List<Map<String,String>> deptlist=studentsDao.getDepts(sex);//获取性别专业数
+//
+//        for (Map<String,String> deptMap:deptlist){
+//            List<Students> studentsList=studentsDao.getStuByDeptAndSex(deptMap.get("dept"),sex);//获取专业对应性别人数
+//            int deptSentry=1;//专业人数统计哨兵，统计安排到第几个人
+//            if (Integer.parseInt(overDorm.get("空余宿舍").toString())!=0){//上一次分配中有剩余床位
+//                int bedNum=Integer.parseInt(overDorm.get("空余床位数量").toString());
+//                int bed=Integer.parseInt(overDorm.get("空余床位起始位置").toString());
+//                Iterator<Students> iterator=studentsList.iterator();
+//                int j=0;
+//                DormStu dormStu=new DormStu();
+//                while (iterator.hasNext()&&j<bedNum){
+//                    Students student=iterator.next();
+//                    dormStu.setBedNo(bed);
+//                    dormStu.setsNo(student.getsNo());
+//                    dormStu.setdNo(overDorm.get("宿舍号").toString());
+//                    bed++;
+//                    iterator.remove();
+//                    try {
+//                        dormStuDao.insert(dormStu);
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                        resultMap.put("msg",sex+"宿舍安排出错");
+//                        resultMap.put("code",1);
+//                        return resultMap;
+//                    }
+//                   j++;
+//
+//                }
+//                studentsList= Lists.newArrayList(iterator);
+//                dormId++;
+//
+//            }
+//            int studentsNum=studentsList.size();
+//            int dormNum=(int)Math.ceil((double)studentsNum/dormManNum);//向上取整
+//            int beginNum=dormId;
+//            for(;dormId<=(beginNum+dormNum-1);dormId++){
+//                int i=1;//床位数
+//                for (;i<=dormManNum&&deptSentry<=studentsList.size();i++){
+//                    DormStu dormStu=new DormStu(dormList.get(dormId-1).getdNo(),studentsList.get(deptSentry-1).getsNo(),i);
+//                    try {
+//                        dormStuDao.insert(dormStu);
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                        resultMap.put("msg",sex+"宿舍安排出错");
+//                        resultMap.put("code",1);
+//                        return resultMap;
+//                    }
+//                    deptSentry++;
+//
+//                }
+//
+//            }
+//            dormId--;//减去最后一次加的一
+//            int overBed=(int)(dormNum*dormManNum-studentsNum);//空余床位
+//            if (overBed!=0){//有剩余
+//                int bedid=(int)(dormManNum-overBed+1);//空余床位起始序号
+//                overDorm.put("空余床位起始位置",bedid);
+//                overDorm.put("宿舍号",dormList.get(dormId-1).getdNo());
+//                overDorm.put("空余床位数量",overBed);
+//                overDorm.put("空余宿舍",dormId);
+//            }else {
+//                overDorm.put("空余宿舍",0);//位置dormId
+//                overDorm.put("空余床位数量",0);
+//                overDorm.put("空余床位起始位置",0);
+//                overDorm.put("宿舍号","");
+//            }
+//        }
+//
+//        resultMap.put("msg","宿舍安排成功");
+//        resultMap.put("code",0);
+//        return resultMap;
+//    }
 
 
 }

@@ -135,4 +135,9 @@
     GROUP BY dept
     ORDER BY COUNT(*) DESC
   </select>
+
+  <select id="getStudentsBySex" resultMap="BaseResultMap">
+    select * from students where sex=#{sex}
+    order by dept
+  </select>
 </mapper>

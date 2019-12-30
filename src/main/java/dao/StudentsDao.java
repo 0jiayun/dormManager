@@ -33,4 +33,6 @@ public interface StudentsDao {
     int countDeptStudents(@Param("dept") String dept,@Param("sex") String sex );
 
     Boolean deleteAllStu();
+
+    List<Students> getStudentsBySex(@Param("sex") String sex);//group by dept
 }
