@@ -2,48 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="dormManage:war exploded" />
+      <artifact name="dormManage:war" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06d69b21-4d1c-46af-9a7c-730f3745d14e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/impl/AdminServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test/AdminTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DormStuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DormStuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/StudentsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/StudentsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DormDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DormDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DormStuDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DormStuDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/StudentsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/StudentsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/DormStuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/DormStuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/StudentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/StudentsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/StudentsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/StudentsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/DormDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/DormDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/DormStuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/DormStuDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/StudentsDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/StudentsDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/StudentsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/StudentsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DormStuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DormStuDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/StudentsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/StudentsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/DormDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/DormDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mappers/DormStuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/DormStuDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/StudentsDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/StudentsDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/StudentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/StudentsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/impl/StudentsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/impl/StudentsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/controller/StudentsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/controller/StudentsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/dao/DormStuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/dao/DormStuDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/dao/StudentsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/dao/StudentsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/DormDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/DormDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/impl/DormStuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/impl/DormStuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/DormStuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/DormStuDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/StudentsDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/mappers/StudentsDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/StudentsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/StudentsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/impl/StudentsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/impl/StudentsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/impl/DormStuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/dormManage/WEB-INF/classes/service/impl/DormStuServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,32 +43,32 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="153" />
-          <entry key="properties" value="2" />
+          <entry key="properties" value="3" />
           <entry key="xml" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="153" />
-          <entry key="Properties" value="2" />
+          <entry key="Properties" value="3" />
           <entry key="XML" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="10" />
-          <entry key="java" value="5484" />
+          <entry key="java" value="5498" />
           <entry key="properties" value="4" />
-          <entry key="xml" value="1141" />
+          <entry key="xml" value="1146" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5484" />
+          <entry key="JAVA" value="5498" />
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="Properties" value="4" />
           <entry key="SQL" value="42" />
-          <entry key="XML" value="1099" />
+          <entry key="XML" value="1104" />
         </counts>
       </usages-collector>
     </session>
@@ -108,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
+            <state relative-caret-position="159">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,8 +90,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/DormStuDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+            <state relative-caret-position="378">
+              <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -167,6 +146,7 @@
       <find>exportExcel</find>
       <find>insertDormStu</find>
       <find>updateByPrimaryKeySelective</find>
+      <find>getDnoBySno</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/src/main/java/utils/FileUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojo/students.java" />
@@ -209,8 +188,9 @@
         <option value="$PROJECT_DIR$/src/main/java/service/DormStuService.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/DormStuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/DormStuDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/mappers/DormStuDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -328,6 +308,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dormManage" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dormManage" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -337,7 +322,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577889729918" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577895201389" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -529,7 +514,7 @@
       <workItem from="1577693731906" duration="4517000" />
       <workItem from="1577713303050" duration="1562000" />
       <workItem from="1577717192286" duration="2881000" />
-      <workItem from="1577882160790" duration="7325000" />
+      <workItem from="1577882160790" duration="12926000" />
     </task>
     <servers />
   </component>
@@ -551,7 +536,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56825000" />
+    <option name="totallyTimeSpent" value="62426000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -566,7 +551,7 @@
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16168623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16168623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -576,7 +561,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297062" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37731734" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40130863" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32061067" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -613,13 +598,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojo/dormKey.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pojo/studentsKey.java" />
@@ -866,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="113" column="61" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/DormStuDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -886,10 +854,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/DormStuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/DormStuDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        <state relative-caret-position="378">
+          <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
         </state>
       </provider>
     </entry>
