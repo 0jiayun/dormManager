@@ -13,6 +13,8 @@ public interface DormDao {
 
     int insertSelective(Dorm record);
 
+
+
     List<Dorm> getManDorms(@Param("build") String build);
 
     List<Dorm> getWomanDorms(@Param("build") String build);

@@ -13,4 +13,6 @@ public interface DormStuService {
     List<StuDorm> getStuDorms();
 
     Map deleteAll();
+
+    Map getArrangebySno(String sNo);
 }

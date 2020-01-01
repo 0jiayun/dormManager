@@ -13,9 +13,14 @@ public interface DormStuDao {
 
     Boolean deleteAllDS();
 
+    int deleteBysNo(@Param("sNo") String sNo);
+
     List<StuDorm> getArrange(@Param("sNo")String sNo, @Param("sName") String sName,@Param("dNo") String dNo,
                              @Param("start") Integer start, @Param("number") Integer number);
     int count(@Param("sNo")String sNo, @Param("sName") String sName,@Param("dNo") String dNo);
+
+    String getDnoBySno(@Param("sNo") String sNo);
+    List<StuDorm> getArrangeBysNo(@Param("dNo")String dNo);
 
     List<StuDorm> getAllArranges();
 }

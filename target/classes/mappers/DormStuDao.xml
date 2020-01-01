@@ -92,4 +92,18 @@
       order by ds.`d_no`
   </select>
 
+  <delete id="deleteBysNo" >
+    delete FROM dorm_stu where s_no=#{sNo}
+  </delete>
+
+  <select id="getDnoBySno" resultType="String">
+    select d_no from dorm_stu where s_no=#{sNo}
+  </select>
+  <select id="getArrangeBysNo" resultMap="BaseResultMap2">
+    SELECT s.`s_no`,s.`s_name`,s.`sex`,s.`dept`,ds.`d_no`,ds.`bed_no` FROM students s,dorm_stu ds
+    WHERE s.`s_no`=ds.`s_no`
+     and ds.`d_no`=#{dNo}
+     group by ds.`bed_no`
+  </select>
+
 </mapper>

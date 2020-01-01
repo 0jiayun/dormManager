@@ -35,4 +35,6 @@ public interface StudentsDao {
     Boolean deleteAllStu();
 
     List<Students> getStudentsBySex(@Param("sex") String sex);//group by dept
+
+    Students studentsLogin(@Param("userName") String userName,@Param("password") String  password);
 }

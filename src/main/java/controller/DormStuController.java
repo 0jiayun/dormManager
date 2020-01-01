@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.DormStuService;
 
@@ -43,6 +44,16 @@ public class DormStuController {
     @ResponseBody
     public Map clearAll(){
         return dormStuService.deleteAll();
+    }
+
+    /**
+     * 获取某个学生的宿舍安排信息
+     * @return
+     */
+    @RequestMapping("getArrangebySno")
+    @ResponseBody
+    public Map getArrangebySno(@RequestParam("sNo")String sNo){
+        return dormStuService.getArrangebySno(sNo);
     }
 
 }

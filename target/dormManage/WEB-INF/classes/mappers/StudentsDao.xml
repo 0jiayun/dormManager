@@ -140,4 +140,9 @@
     select * from students where sex=#{sex}
     order by dept
   </select>
+  <select id="studentsLogin" resultType="students">
+    select * from students
+    where s_no=#{userName} and s_no=#{password}
+  </select>
+
 </mapper>

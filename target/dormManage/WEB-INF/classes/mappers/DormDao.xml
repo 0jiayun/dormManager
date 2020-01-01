@@ -26,6 +26,8 @@
     </trim>
   </insert>
 
+
+
   <select id="getManDorms" resultMap="BaseResultMap">
     SELECT * FROM dorm
     WHERE d_no LIKE CONCAT(CONCAT('%', #{build,jdbcType=VARCHAR}), '%')

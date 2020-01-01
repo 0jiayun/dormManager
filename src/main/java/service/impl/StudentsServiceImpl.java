@@ -1,8 +1,10 @@
 package service.impl;
 
+import dao.DormStuDao;
 import dao.StudentsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pojo.DormStu;
 import pojo.Students;
 import service.StudentsService;
 
@@ -15,6 +17,9 @@ import java.util.Map;
 public class StudentsServiceImpl implements StudentsService {
     @Autowired
     private StudentsDao studentsDao;
+
+    @Autowired
+    private DormStuDao dormStuDao;
 
     @Override
     public Map insertStudents(List<Students> list) {
@@ -72,6 +77,66 @@ public class StudentsServiceImpl implements StudentsService {
         resultMap.put("code",0);
         resultMap.put("data",dataList);
 
+        return resultMap;
+    }
+
+    @Override
+    public Map studentsLogin(Map<String, Object> map) {
+        String userName=map.get("userName").toString();
+        String password=map.get("password").toString();
+        Map resultMap=new HashMap();
+        try {
+            Students students=studentsDao.studentsLogin(userName,password);
+            resultMap.put("code",0);
+            resultMap.put("msg","登陆成功");
+            resultMap.put("data",students);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            resultMap.put("code",1);
+            resultMap.put("msg","学生登陆出错");
+            resultMap.put("data","null");
+            return resultMap;
+        }
+        return resultMap;
+    }
+
+    @Override
+    public Map updateStudents(Students students) {
+        Map resultMap=new HashMap();
+        try {
+            studentsDao.updateByPrimaryKeySelective(students);
+            resultMap.put("code",0);
+            resultMap.put("msg","修改成功");
+            resultMap.put("data","SUCCESS");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            resultMap.put("code",1);
+            resultMap.put("msg","修改出错");
+            resultMap.put("data","null");
+            return resultMap;
+        }
+        return resultMap;
+
+    }
+
+    @Override
+    public Map deleteStudents(String sNo) {
+        Map resultMap=new HashMap();
+        try {
+
+            dormStuDao.deleteBysNo(sNo);//先删除中间表记录，有关联
+            studentsDao.deleteByPrimaryKey(sNo);
+            resultMap.put("code",0);
+            resultMap.put("msg","删除成功");
+            resultMap.put("data","SUCCESS");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultMap.put("code",1);
+            resultMap.put("msg","删除失败");
+            resultMap.put("data","null");
+        }
         return resultMap;
     }
 }

@@ -105,6 +105,25 @@ public class DormStuServiceImpl implements DormStuService {
         return resultMap;
     }
 
+    @Override
+    public Map getArrangebySno(String sNo) {
+        Map resultMap=new HashMap();
+        try {
+
+            String dNo=dormStuDao.getDnoBySno(sNo);
+            List<StuDorm> list=dormStuDao.getArrangeBysNo(dNo);
+            resultMap.put("code",0);
+            resultMap.put("msg","获取成功");
+            resultMap.put("data",list);
+        }catch (Exception e){
+            e.printStackTrace();
+            resultMap.put("code",1);
+            resultMap.put("msg","获取失败");
+            resultMap.put("data","null");
+        }
+        return resultMap;
+    }
+
     public Map arrangeDorm2(List<Students> personList,List<Dorm> dormList,String sex){
         Map resultMap=new HashMap();
         int personNum=personList.size();//总人数
