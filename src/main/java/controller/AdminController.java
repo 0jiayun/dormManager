@@ -19,6 +19,8 @@ public class AdminController {
     @RequestMapping("login")
     @ResponseBody
     public Map login(@RequestBody Admin admin){
+
+
         return adminService.checkLogin(admin);
     }
 }

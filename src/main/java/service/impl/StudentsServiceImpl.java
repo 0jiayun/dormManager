@@ -86,10 +86,18 @@ public class StudentsServiceImpl implements StudentsService {
         String password=map.get("password").toString();
         Map resultMap=new HashMap();
         try {
+
             Students students=studentsDao.studentsLogin(userName,password);
-            resultMap.put("code",0);
-            resultMap.put("msg","登陆成功");
-            resultMap.put("data",students);
+            if (students!=null){
+                resultMap.put("code",0);
+                resultMap.put("msg","登陆成功");
+                resultMap.put("data",students);
+            }else{
+                resultMap.put("code",2);
+                resultMap.put("msg","账号或者密码错误");
+                resultMap.put("data",students);
+            }
+
 
         }catch (Exception e){
             e.printStackTrace();

